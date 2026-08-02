@@ -1,4 +1,4 @@
-# Assts
+# Assets
 
 Nos templates, nós usamos assets publicos para não depender do caminho relativo para a pasta assets.
 
