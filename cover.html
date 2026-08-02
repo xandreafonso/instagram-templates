@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Capa{% endblock %}
+{% block slide %}
+<div class="slide aspect-[4/5] w-full max-w-lg flex items-center justify-center dark:text-white bg-gradient-to-tr from-white via-zinc-50 to-zinc-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800 shadow-lg">
+    <div class="aspect-square w-full p-8 pt-2 flex flex-col">
+        <div class="flex-1 flex items-center justify-center">
+            <!-- INÍCIO TEXTO CAPA -->
+            {{ headline | safe }}
+            <!-- FIM TEXTO CAPA -->
+        </div>
+
+        <div class="h-1/5 px-8 flex items-center gap-4">
+            <div class="aspect-square h-full">
+                <img src="https://s3.us-east-1.amazonaws.com/s3.scripts.alexandreafonso.com.br/public/temp/assets/alexandre.png" class="rounded-full border-4 border-sky-600" />
+            </div>
+
+            <div class="flex-1 flex flex-col gap-2 text-sky-600">
+                <div class="text-3xl font-semibold">Alexandre Afonso</div>
+                <div class="text-lg">@xandreafonso</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
