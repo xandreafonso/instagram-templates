@@ -10,8 +10,16 @@ s3 --profile scripts --prefix public/temp --upload assets/alexandre.png
 
 # Usando templates
 
-Use o comando templates para interpolar com a copy do post.
+Use o comando `template_engine` para interpolar com a copy do post.
 
 ```bash
-template --template cover.html --context data-sample.json --output .temp/cover.html
+template_engine --template cover.html --context data-sample.json --output .temp/cover.html
+```
+
+# Gerando Imagem
+
+Use o comando `playwright_flow` para gerar a imagem.
+
+```bash
+playwright_flow --page-goto 'C:\Users\afons\Documents\Workspace\instagram-templates\.temp\cover.html' --screenshot '.slide' --ss-path .temp/cover.png
 ```
