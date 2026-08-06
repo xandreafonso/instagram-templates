@@ -4,21 +4,28 @@
 - Conteúdo `content.html`
 - Chamada para ação `cta.html`
 
-Cada template possui "espaços" a serem preenchidos. Cada "espaço" a ser preenchido corresponde a uma propriedade de contexto usada pelo template.
+Os templates foram construídos com HTML e TailwindCSS. Cada um possui "espaços" a serem preenchidos. Cada "espaço" a ser preenchido corresponde a uma propriedade de contexto usada pelo template.
 
 Comandos usados para aplicar o template:
 
 - `template_engine` é usado para aplicar o template em si
-- `playwright_flow` é usado para gerar a imagem com base no arquivo HTML gerado pela engine
+- `playwright_flow` é usado para gerar a imagem com base no arquivo HTML criado pela engine
 
 Ex:
 
 ```bash
-template_engine --template /workspace/instagram-templates/cover.html --context '{"headline": "..."}' --output /workspace/.temp/CN00000000A/cover.html
-playwright_flow --page-goto /workspace/.temp/CN00000000A/cover.html --screenshot '.slide' --ss-path /workspace/.temp/CN00000000A/cover.png
+template_engine --template "$WORKSPACE/instagram-templates/cover.html" --context '{"headline": "..."}' --output "$WORKSPACE/.temp/instagram-posts-carrossel/CN00000000A/slide-01--cover.html"
+playwright_flow --theme dark --page-goto "$WORKSPACE/.temp/instagram-posts-carrossel/CN00000000A/slide-01--cover.html" --screenshot '.slide' --ss-path "$WORKSPACE/.temp/instagram-posts-carrossel/CN00000000A/slide-01--cover.png"
 ```
 
+Nota: repare que "CN00000000A" se refere ao código do conteúdo/carrossel que estiver sendo criado.
 Nota: no caso de aplicar o template nos slides de conteúdo, cada arquivo de saída deve conter um número no nome referente a posição do slide no carrossel como um todo.
+
+Caso seja preciso, pode-se enviar os slides para o storage do S3 com o comando `s3`. Abaixo temos um exemplo do envio de todos os arquivos de uma pasta. A ideia do exemplo foi que os slides foram salvos em uma pasta e usamos o path da mesma como parâmetro para o script `s3`.
+
+```bash
+s3 --profile scripts --upload "$WORKSPACE/.temp/instagram-posts-carrossel/CN00000000A/" --prefix public/instagram-posts/xandreafonso/CN00000000A
+```
 
 ## Capa
 
